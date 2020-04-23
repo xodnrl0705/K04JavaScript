@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J17CssControl.html</title>
+    <script>
+        var pTag, pSize;
+        window.onload = function(){
+            pTag = document.getElementById("article");
+            pSize = parseInt(pTag.style.fontSize);
+            
+        }
+
+        function fnArticle(flag){
+
+            switch(flag){
+            case "+":
+                pSize +=10;
+                pTag.style.fontSize = pSize+"px";
+                break;
+            case "-":
+                pSize -=10;
+                pTag.style.fontSize = pSize+"px";
+                break;
+            case "R":
+                pTag.style.color = "red";
+                break;
+            case "G":
+                pTag.style.color = "Green";
+                break;
+            case "B":
+                pTag.style.color = "blue";
+                break;
+            case "Bo":
+                pTag.style.fontWeight = "bold";
+                break;
+            case "No":
+                pTag.style.fontWeight = "normal";
+                break;
+            case "Ce":
+                pTag.style.textAlign = "center";
+                break;
+            case "Le":
+                pTag.style.textAlign = "left";
+                break;
+            
+            default:
+                pTag.style.color = "black";
+            }
+
+        }
+
+        /*
+        문제] 글꼴바꾸기 버튼을 계속 누를때마다 아래 5가지
+        폰트가 토글되어 적용될수 있도록 함수를 정의하시오.
+        글꼴 : Verdana, 굴림체, 휴먼옛체, 궁서, Impact
+
+        function setFont(){
+            실행부;
+        }
+        [내가한거]
+        var a = 0;//전역변수
+        function setFont(){
+            var fontArr = ["Verdana", "굴림체", "휴먼옛체", "궁서", "Impact"];
+            //console.log("a", a);
+            pTag.style.fontFamily = fontArr[a++]; //-->fontFamily:글꼴종류 지정
+            if(a==5){
+                a = 0;
+            }
+        }
+        */
+        
+        
+        var fontToggle = 0;//폰트 토글을 위한 전역변수
+        function setFont(){
+            var fontArray = ["Verdana", "굴림체", "휴먼옛체", "궁서", "Impact"];//문제에서 주어진 폰트를 배열로 선언
+            var fontIndex = fontToggle % 5;//정수를 5로 나누면 나머지는 0~4까지 생성
+            pTag.style.fontFamily = fontArray[fontIndex];//위에서 구한 수를 인덱스로 폰트 설정
+            fontToggle++;//함수를 호출할때마다 1증가
+        }
+    </script>
+</head>
+<body>
+    <h2>자바스크립트로 CSS제어하기</h2>
+    <input type="button" value="글꼴바꾸기" onclick="setFont();"/>
+    <fieldset>
+        <legend>신문기사</legend>
+        <button onclick="fnArticle('+');">+</button>
+        <button onclick="fnArticle('-');">-</button>
+        <button onclick="fnArticle('R');">Red</button>
+        <button onclick="fnArticle('G');">Green</button>
+        <button onclick="fnArticle('B');">Blue</button>
+        <button onclick="fnArticle('');">Black</button>
+        <button onclick="fnArticle('Bo');">볼드체</button>
+        <button onclick="fnArticle('No');">보통체</button>
+        <button onclick="fnArticle('Ce');">가운데정렬</button>
+        <button onclick="fnArticle('Le');">좌측정렬</button>
+    </fieldset>
+    <p style="font-size: 12px;" id= "article">
+        오늘의 뉴스<br/>
+        [스포탈코리아] 서재원 기자= 유렵축구연맹(UEFA)이 기존 입장을 바꿔, 국내리그 종료 가능성에 대한 문을 열어뒀다.
+        <br/><br/>
+        영국 '이브닝스탠다드'는 22일(한국시간) "UEFA는 신종 코로나바이러스 감염증(코로나19)으로 인해 국내리그 취소의 문을 열어뒀다"고 보도했다.
+        <br/><br/>
+        코로나19가 유럽 전역을 강타하면서, 대부분 유럽 축구리그의 일정이 중단됐다. UEFA는 코로나19로 인한 몇 차례 긴급회의를 개최했는데, 당초 각 리그 일정을 무조건 마무리하겠다는 입장을 취해왔다.
+        <br/><br/>
+        그러나 코로나19 위기가 지속되면서, 기존 입장만 고수할 수 없는 상황이 됐다. 벨기에 리그와 네덜란드 리그가 차례로 시즌 조기 종료를 발표했다. UEFA는 21일 55개 회원국 협회와 회의를 통해 기존 입장을 완화하겠다고 결정했다.
+        <br/><br/>
+        물론 리그 조기 종료는 최후의 수단이 돼야 한다고 주장하고 있다. UEFA는 기존 기준을 완화함에 따라, 다음 시즌 챔피언스리그와 유로파리그 참가 기준에 대한 가이드라인을 논의할 예정이다.
+        <br/><br/>
+        한편, UEFA 알렉산더 세페린 회장은 이번 시즌 종료 여부와 별개로 2020/2021시즌 9월 중순 개막을 추진하고 있다.
+        <br/><br/>
+    </p>
+    
+</body>
+</html>

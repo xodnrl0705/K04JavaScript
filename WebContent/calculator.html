@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator.html</title>
+    <style>
+        table{
+            font-weight: bold;
+            color: white;  
+            border-radius: 10px 10px 10px 10px;
+            background-color: #DDDDDD;
+            text-align: "center";
+        }
+        th{
+            height: 50px;
+            border-radius: 10px 10px 10px 10px;
+            padding-right: 5px;
+            background-color :#70C738;
+            color:#373737;
+            font-size:25px;
+        }
+
+        td{
+            background-color: #373737;
+            text-align: center;
+            border-radius: 10px 10px 10px 10px;
+
+        }
+        .cal{
+            background-color: #FA960A;
+        }
+        .BC{
+            width: 50%;
+            background-color: #7B7B7B;
+
+        }
+    </style>
+    <script>
+        var rTag;//, rContents;
+        var b = 0;
+        window.onload = function(){
+            rTag = document.getElementById("result");
+            //rContents = rTag.innerHTML;
+        }
+        function fnInput(input){
+            //console.log(b);
+            switch(input){
+            //숫자,'.' 입력시 맨윗칸에 입력
+            case "1": case"2" : case"3" : case"4" : case"5" : case"6" : case"7" : case"8" : case"9" : case"0" : case"." :
+                if(b==0){
+                    rTag.innerHTML = input;
+                    b=1;
+                    break;
+                }
+                else{
+                    rTag.innerHTML += input;
+                }
+                break;
+            
+            //BackSpace
+            case "BS":
+                var a = rTag.innerHTML;
+                rTag.innerHTML = a.substr(0,a.length-1);
+                //console.log(a);
+                //console.log(a.substr(0,a.length-1));
+                if(rTag.innerHTML.length==0){
+                    rTag.innerHTML=0;
+                    b=0;
+                }
+
+                break;
+            
+            //Clear(C)
+            case "C":
+                rTag.innerHTML = "0";
+                b=0;
+                break;
+
+            case "/":
+                rTag.innerHTML += input;
+                break;
+            case "*":
+                rTag.innerHTML += input;
+                break;
+            case "+":
+                rTag.innerHTML += input;
+                break;
+            case "-":
+                rTag.innerHTML += input;
+                break;
+            case "=":
+                rTag.innerHTML = eval(rTag.innerHTML);
+                //console.log(rTag.innerHTML);
+                break;
+            default:
+                break;
+            }
+        }
+    </script>
+        
+
+</head>
+<body>
+    <h2 style="text-align: center;">계산기Ver1.0</h2>
+    <table width = 400 height=300" align ="center" >
+        <tr>
+            <th id="result" colspan="4" align ="right">0</th>
+        </tr>
+        <tr>
+            <td colspan="2" class = "BC" onmousedown="fnInput('BS');">
+                BackSpace</td>
+            <td colspan="2" class = "BC" onmousedown="fnInput('C');">C</td>
+        </tr>
+        <tr>
+            <td onmousedown="fnInput('1');">1</td>
+            <td onmousedown="fnInput('2');">2</td>
+            <td onmousedown="fnInput('3');">3</td>
+            <td class="cal" onmousedown="fnInput('/');">/</td>
+        </tr>
+        <tr>
+            <td onmousedown="fnInput('4');">4</td>
+            <td onmousedown="fnInput('5');">5</td>
+            <td onmousedown="fnInput('6');">6</td>
+            <td class="cal" onmousedown="fnInput('*');">X</td>
+        </tr>
+        <tr>
+            <td onmousedown="fnInput('7');">7</td>
+            <td onmousedown="fnInput('8');">8</td>
+            <td onmousedown="fnInput('9');">9</td>
+            <td class="cal" onmousedown="fnInput('+');">+</td>
+        </tr>
+        <tr>
+            <td onmousedown="fnInput('=');">=</td>
+            <td onmousedown="fnInput('0');">0</td>
+            <td onmousedown="fnInput('.');">.</td>
+            <td class="cal" onmousedown="fnInput('-');">-</td>
+        </tr>
+    
+    </table>
+</body>
+</html>
