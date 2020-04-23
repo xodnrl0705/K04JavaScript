@@ -51,12 +51,12 @@
             case "1": case"2" : case"3" : case"4" : case"5" : case"6" : case"7" : case"8" : case"9" : case"0" : case"." :
                 if(b==0){
                     rTag.innerHTML = input;
-                    f.calculation.value=input;
+                    f.calculation.value+=input;
                     b=1;
                     break;
                 }
                 else{
-                    rTag.innerHTML = input;
+                    rTag.innerHTML += input;
                     f.calculation.value+=input;
 
                 }
@@ -65,9 +65,9 @@
             //BackSpace
             case "BS":
                 var a = rTag.innerHTML;
+                var c = f.calculation.value;
                 rTag.innerHTML = a.substr(0,a.length-1);
-                //console.log(a);
-                //console.log(a.substr(0,a.length-1));
+                f.calculation.value = c.substr(0,c.length-1);
                 if(rTag.innerHTML.length==0){
                     rTag.innerHTML=0;
                     b=0;
@@ -82,19 +82,28 @@
                 break;
 
             case "/":
-                rTag.innerHTML += input;
+                //rTag.innerHTML += input;
+                f.calculation.value+=input;
+                b=0;
                 break;
             case "*":
-                rTag.innerHTML += input;
+                //rTag.innerHTML += input;
+                f.calculation.value+=input;
+                b=0;
                 break;
             case "+":
-                rTag.innerHTML += input;
+                //rTag.innerHTML += input;
+                f.calculation.value+=input;
+                b=0;
                 break;
             case "-":
-                rTag.innerHTML += input;
+                //rTag.innerHTML += input;
+                f.calculation.value+=input;
+                b=0;
                 break;
             case "=":
-                rTag.innerHTML = eval(rTag.innerHTML);
+                rTag.innerHTML = eval(f.calculation.value);
+                f.calculation.value = rTag.innerHTML;
                 //console.log(rTag.innerHTML);
                 
                 break;
@@ -107,7 +116,7 @@
 
 </head>
 <body>
-    <h2 style="text-align: center;">계산기Ver1.0</h2>
+    <h2 style="text-align: center;">계산기Ver2.0</h2>
     <table width = 400 height=300" align ="center" >
         <tr>
             <th id="result" colspan="4" align ="right">0</th>
@@ -147,6 +156,6 @@
             <td class="cal" onmousedown="fnInput('-');">-</td>
         </tr>
     </table>
-    <form name ="frm"><input type="text" name = "calculation" value=""></form>
+    <form name ="frm"><input type="text" name = "calculation" value="" hidden></form>
 </body>
 </html>
