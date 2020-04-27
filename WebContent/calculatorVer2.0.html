@@ -42,10 +42,10 @@
         window.onload = function(){
             rTag = document.getElementById("result");
             f = document.frm;
-            //rContents = rTag.innerHTML;
+
         }
         function fnInput(input){
-            //console.log(b);
+
             switch(input){
             //숫자,'.' 입력시 맨윗칸에 입력
             case "1": case"2" : case"3" : case"4" : case"5" : case"6" : case"7" : case"8" : case"9" : case"0" : case"." :
@@ -78,6 +78,7 @@
             //Clear(C)
             case "C":
                 rTag.innerHTML = "0";
+                f.calculation.value="";
                 b=0;
                 break;
 
@@ -120,16 +121,11 @@
     <table width = 400 height=300" align ="center" >
         <tr>
             <th id="result" colspan="4" align ="right">0</th>
-            <!-- <td></td> -->
-            <!-- <td></td> -->
-            <!-- <td></td> -->
         </tr>
         <tr>
             <td colspan="2" class = "BC" onmousedown="fnInput('BS');">
                 BackSpace</td>
-            <!-- <td></td> -->
             <td colspan="2" class = "BC" onmousedown="fnInput('C');">C</td>
-            <!-- <td></td> -->
         </tr>
         <tr>
             <td onmousedown="fnInput('1');">1</td>
@@ -156,6 +152,6 @@
             <td class="cal" onmousedown="fnInput('-');">-</td>
         </tr>
     </table>
-    <form name ="frm"><input type="text" name = "calculation" value="" hidden></form>
+    <form name ="frm"><input type="text" name = "calculation" value=""></form>
 </body>
 </html>
