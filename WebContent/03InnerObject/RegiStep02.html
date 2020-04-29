@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegiStep02.html</title>
+    <style>
+        table{
+
+            font-size: 15px;
+            width: 260px;
+            height: 150px;
+            margin-left: 20px; 
+            margin-top: 40px; 
+
+        }
+
+        .btn{
+        	border: 1px solid black; 
+        	background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <form name="frm2" action="./RegiStep03.jsp" >
+        <table>
+            <tr>
+                <td>아이디</td>
+                <td>
+                    <input type="text" name="id" size="24"/>
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td>
+                    <input type="password" name="pw" size="24"/>
+                </td>
+            </tr>
+            <tr>
+                <td>이메일</td>
+                <td>
+                    <input type="text" name="id" size="24"/>
+                </td>
+            </tr>
+            <tr>
+                <td>성별</td>
+                <td>
+                    <label><input type="radio" name="sex" value="남자"  />남자</label>
+                    <label><input type="radio" name="sex" value="여자"  />여자</label>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input class="btn" type="button" value="   이  전   "
+                    onclick="location.href='http://localhost:8282/K07JSPServlet/03InnerObject/RegiStep01.html';"
+                    onmouseover="this.style.backgroundColor='#e5e5e5';"
+                	onmouseout="this.style.backgroundColor='white';"
+                    />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input class="btn" width= "7px" type="submit" value="   다  음   "
+                    onmouseover="this.style.backgroundColor='#e5e5e5';"
+                	onmouseout="this.style.backgroundColor='white';"
+                    />
+                </td>
+            </tr>
+
+        </table>
+    
+    
+    </form>
+    
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RegiStep01.html</title>
+    <style>
+        table{
+
+            font-size: 15px;
+            width: 260px;
+            height: 150px;
+            margin-left: 20px; 
+            margin-top: 40px; 
+
+        }
+        .left{
+            width: 70px;
+            height: 50px;
+            text-align: center;
+        }
+        .btn{
+        	
+        	border: 1px solid black; 
+        	background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <form name="frm" method="post" action="RegiStep02.html" onsubmit="return nextCheck(this);">
+        <table>
+            <tr>
+                <td class="left">주민번호</td>
+                <td>
+                    <input type="text" name="jumin1" size="6" maxlength="6"/>
+				     &nbsp;- &nbsp;<input type="text" name ="jumin2" size="7" maxlength="7" 	/>
+                </td>
+            </tr>
+            <tr>
+                <td class="left">이&nbsp;&nbsp;&nbsp;&nbsp;름</td>
+                <td><input type="text" name="name" size="23"></td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right;">
+                <input class="btn" type="submit" value= "  다  음  "
+                onmouseover="this.style.backgroundColor='#e5e5e5';"
+                onmouseout="this.style.backgroundColor='white';"
+                /></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function nextCheck(){
+            var f = document.frm;
+
+            if(f.jumin1.value==""){
+                alert("주민번호를 입력해주세요!!");
+                f.jumin1.focus();
+                return false;
+            }
+            if(f.jumin2.value==""){
+                alert("주민번호 뒷자리를 입력해주세요!!");
+                f.jumin2.focus();
+                return false;
+            }
+            if(f.name.value==""){
+                alert("이름을 제대로 입력해주세요!!");
+                f.name.focus();
+                return false;
+            }
+            if(f.jumin1.value.length!=6 ||f.jumin2.value.length!=7){
+                alert("주민번호를 제대로 입력해주세요!!");
+                f.jumin1.focus();
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
