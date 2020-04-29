@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPSGame.html</title>
+    <style>
+        td{
+            
+            font-size: 20px;
+            
+        }
+    </style>
+</head>
+<body>
+    <script>
+        //사용자의 버튼에 따른 가위바위보 그림의 변화
+        function fnUserImg(userNum){
+            var value;//각각의 따른 이미지 경로를 나타내는 변수
+            var RPS_img = document.getElementById("user");
+
+            if(userNum==0){//가위
+                value = "./images/scissors.jpg"
+            }
+            else if(userNum==1){//바위
+                value = "./images/rock.jpg"
+            }
+            else{//보
+                value = "./images/paper.jpg"
+            }
+            RPS_img.src = value;
+            fnComImg(userNum);
+        }
+        //컴퓨터의 랜덤번호에 따른 가위바위보 그림의 변화
+        function fnComImg(userNum){
+            //0(가위),1(바위),2(보)중 난수발생
+            var comNum = parseInt(Math.random()*3);
+            var RPS_img = document.getElementById("com");
+
+            if(comNum==0){//가위
+                value = "./images/scissors.jpg"
+            }
+            else if(comNum==1){//바위
+                value = "./images/rock.jpg"
+            }
+            else{//보
+                value = "./images/paper.jpg"
+            }
+            RPS_img.src = value;
+            vsResult(userNum,comNum)
+        }
+        function vsResult(user,com){
+            var result = user-com;
+            switch(result){
+            case 1: case -2:
+                var result = "이겼습니다."
+                break;
+            case 0:
+                result = "비겼습니다."
+                break;
+            default:
+                result = "졌습니다."
+                break;
+            }
+
+            document.getElementById("here_result").innerHTML
+                = result;
+
+        }
+
+    </script>
+
+
+
+    <h2>가위바위보</h2>
+    <div>
+        <table border="2">
+            <tr>
+                <td>컴퓨터</td>
+                <td>나</td>
+            </tr>
+            <tr style="height: 450px;">
+                <td ><img id ="com" src="./images/start.png" width="400"/></td>
+                <td ><img id ="user" src="./images/start.png" width="400"/></td>
+            </tr>
+            <tr>
+                <td colspan="2" id="here_result">결과내용</td>
+            </tr>
+        </table>
+        <button onclick="fnUserImg(0);">가위</button>
+        <button onclick="fnUserImg(1);">바위</button>
+        <button onclick="fnUserImg(2);">보</button>
+
+
+    </div>
+    
+</body>
+</html>
